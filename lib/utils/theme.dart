@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:google_fonts/google_fonts.dart';
+import 'package:kind_rides/utils/constants.dart';
 
 class ThemProvider extends ChangeNotifier {
   ThemeMode themeMode = ThemeMode.system;
@@ -24,11 +26,15 @@ class Mytheme {
       backgroundColor: Color(0xFFFF00FF),
     ),
     textTheme: TextTheme(
+      headline1: TextStyle(
+          fontSize: 30.sp, color: Colors.black, fontWeight: FontWeight.bold),
+      headline2: TextStyle(
+          fontSize: 30.sp, color: Colors.black, fontWeight: FontWeight.bold),
       headline3: TextStyle(
-        fontWeight: FontWeight.bold,
-        color: Colors.black,
-        fontSize: 20.sp,
-      ),
+          fontSize: 30.sp, color: Colors.black, fontWeight: FontWeight.bold),
+      headline4: TextStyle(
+          fontSize: 30.sp, color: Colors.black, fontWeight: FontWeight.bold),
+
       bodyText2: TextStyle(
         fontWeight: FontWeight.w500,
         color: Colors.black,
@@ -39,13 +45,13 @@ class Mytheme {
         color: const Color(0xff1BBA85),
         fontSize: 16.sp,
       ),
-      headline4: TextStyle(
-        fontWeight: FontWeight.w400,
-        fontSize: 16.sp,
-        color: Colors.grey,
-      ),
+      // headline4: TextStyle(
+      //   fontWeight: FontWeight.w400,
+      //   fontSize: 16.sp,
+      //   color: Colors.grey,
+      // ),
       headline5: TextStyle(
-        fontWeight: FontWeight.w400,
+        fontWeight: FontWeight.w900,
         fontSize: 14.sp,
         color: Colors.grey,
       ),
@@ -58,45 +64,60 @@ class Mytheme {
   );
 
   static final lightthem = ThemeData(
+    cardColor: Color.fromARGB(255, 239, 241, 241),
     textTheme: TextTheme(
-      headline1: TextStyle(
-        fontWeight: FontWeight.w800,
-        color: Colors.black,
-        fontSize: 22.sp,
+      headline1: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w900,
+          color: Colors.black,
+          fontSize: 30.sp,
+        ),
       ),
-      headline2: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-        fontSize: 20.sp,
+      headline2: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w700,
+          color: Colors.black,
+          fontSize: 24.sp,
+        ),
       ),
-      headline3: TextStyle(
-        fontWeight: FontWeight.w600,
-        color: Colors.black,
-        fontSize: 16.sp,
+      headline3: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Colors.black,
+          fontSize: 18.sp,
+        ),
       ),
-      headline4: TextStyle(
-        fontWeight: FontWeight.w400,
-        fontSize: 16.sp,
-        color: Colors.black,
+      headline4: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 16.sp,
+          color: Colors.grey,
+        ),
       ),
-      bodyText2: TextStyle(
-        fontWeight: FontWeight.w500,
-        color: const Color(0xff1BBA85),
-        fontSize: 16.sp,
+      bodyText2: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w600,
+          color: Color.fromARGB(255, 14, 133, 84),
+          fontSize: 14.sp,
+        ),
       ),
-      bodyText1: TextStyle(
-        fontWeight: FontWeight.w500,
-        color: Colors.grey,
-        fontSize: 14.sp,
+      bodyText1: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w500,
+          color: Colors.grey,
+          fontSize: 14.sp,
+        ),
       ),
-      button: TextStyle(
-        color: Colors.white,
-        fontSize: 16.sp,
-        fontWeight: FontWeight.w600,
+      button: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          color: Colors.white,
+          fontSize: 16.sp,
+          fontWeight: FontWeight.w600,
+        ),
       ),
     ),
     scaffoldBackgroundColor: //Colors.red,
-        const Color(0xFFF3F5F6),
+        Colors.white,
     elevatedButtonTheme: ElevatedButtonThemeData(
       style: ButtonStyle(
         backgroundColor: MaterialStateProperty.resolveWith((states) {
@@ -104,7 +125,7 @@ class Mytheme {
           if (states.contains(MaterialState.pressed)) {
             return Color(0xff1BBA85);
           }
-          return Colors.grey;
+          return Color(Constants.buttonGrey);
         }),
 
         padding: MaterialStateProperty.resolveWith((states) {

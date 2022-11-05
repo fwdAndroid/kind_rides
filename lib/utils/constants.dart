@@ -47,6 +47,7 @@ class Constants {
   static int redBg = 0xFFff5b5b;
   static int redText = 0xFFd80000;
   static int greenDark = 0xFF004a2b;
+  static int greenButtonBg = 0xFF98d4bb;
 
   static int containerGrey = 0xFFd9d9d9;
   static Color? transparentGrey = const Color.fromRGBO(53, 56, 63, 0.6);
