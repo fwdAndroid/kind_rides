@@ -63,7 +63,7 @@ class _LoginPageState extends State<LoginPage> {
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -87,7 +87,7 @@ class _LoginPageState extends State<LoginPage> {
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -154,7 +154,7 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
                     radius: 10.r,
-                    color: Theme.of(context).cardColor,
+                    color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/facebook.png"),
@@ -179,7 +179,7 @@ class _LoginPageState extends State<LoginPage> {
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
                     radius: 10.r,
-                    color: Theme.of(context).cardColor,
+                    color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/google.png"),

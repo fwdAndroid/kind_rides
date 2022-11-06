@@ -27,6 +27,13 @@ Widget getButton({
         vertical: vertical ?? 10.h, horizontal: horizontal ?? 20.h),
     width: width ?? 200.w,
     decoration: BoxDecoration(
+      boxShadow: const <BoxShadow>[
+        BoxShadow(
+            color: Color.fromARGB(133, 37, 175, 172),
+            blurRadius: 30.0,
+            offset: Offset(0.9, 0.85),
+            blurStyle: BlurStyle.normal),
+      ],
       color: color ?? Color(Constants.greenButtonBg),
       // border: Border.all(
       //  // width: 1.w,

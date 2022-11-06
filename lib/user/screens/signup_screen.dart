@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/login_screen.dart';
+import 'package:kind_rides/user/screens/otp_verification_screen.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 
@@ -63,7 +64,7 @@ class _SignupPageState extends State<SignupPage> {
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -82,12 +83,12 @@ class _SignupPageState extends State<SignupPage> {
                             autovalidateMode: AutovalidateMode.disabled,
                           ),
                           SizedBox(
-                            height: 10.h,
+                            height: 6.h,
                           ),
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -110,7 +111,7 @@ class _SignupPageState extends State<SignupPage> {
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -133,7 +134,7 @@ class _SignupPageState extends State<SignupPage> {
                           CTextField(
                             prefixIcon: Container(
                               decoration: BoxDecoration(
-                                color: Color(Constants.greenBg),
+                                color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
                               margin: EdgeInsets.all(6),
@@ -151,7 +152,7 @@ class _SignupPageState extends State<SignupPage> {
                             autovalidateMode: AutovalidateMode.disabled,
                           ),
                           SizedBox(
-                            height: 30.h,
+                            height: 35.h,
                           ),
                         ],
                       ),
@@ -172,7 +173,13 @@ class _SignupPageState extends State<SignupPage> {
                     Positioned(
                       bottom: -25,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const OTPVerificationPage()),
+                              (Route<dynamic> route) => false);
+                        },
                         child: getButton(
                             radius: 30.r,
                             width: 160.h,
@@ -193,7 +200,7 @@ class _SignupPageState extends State<SignupPage> {
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
                     radius: 10.r,
-                    color: Theme.of(context).cardColor,
+                    color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/facebook.png"),
@@ -202,7 +209,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         Text(
                           "Register with Facebook",
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.headline4,
                         )
                       ],
                     ),
@@ -218,7 +225,7 @@ class _SignupPageState extends State<SignupPage> {
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
                     radius: 10.r,
-                    color: Theme.of(context).cardColor,
+                    color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/google.png"),
@@ -227,7 +234,7 @@ class _SignupPageState extends State<SignupPage> {
                         ),
                         Text(
                           "Register with Google",
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.headline4,
                         )
                       ],
                     ),
@@ -245,7 +252,7 @@ class _SignupPageState extends State<SignupPage> {
                   },
                   child: Text(
                     "Already have an account?",
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.bodyText1,
                   ),
                 ),
               ],

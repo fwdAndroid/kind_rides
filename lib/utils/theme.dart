@@ -15,9 +15,10 @@ class ThemProvider extends ChangeNotifier {
 
 class Mytheme {
   static final darkthem = ThemeData(
+    splashColor: Color.fromARGB(255, 160, 222, 225),
     scaffoldBackgroundColor: const Color(0xff002A3C),
     appBarTheme: const AppBarTheme(backgroundColor: Color(0xff3450A1)),
-    primaryColor: Colors.white,
+    primaryColor: const Color(0xff1BBA85),
     dividerColor: Colors.black,
     selectedRowColor: Color.fromARGB(255, 27, 186, 133),
     cardColor: const Color.fromARGB(255, 170, 173, 175),
@@ -64,7 +65,10 @@ class Mytheme {
   );
 
   static final lightthem = ThemeData(
-    cardColor: Color.fromARGB(255, 239, 241, 241),
+    cardColor: Color.fromARGB(255, 245, 249, 249),
+    hintColor: Color.fromARGB(255, 24, 25, 25),
+    splashColor: Color.fromARGB(255, 212, 249, 251),
+    selectedRowColor: Color.fromARGB(255, 240, 241, 241),
     textTheme: TextTheme(
       headline1: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
@@ -89,9 +93,9 @@ class Mytheme {
       ),
       headline4: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w700,
           fontSize: 16.sp,
-          color: Colors.grey,
+          color: Colors.black,
         ),
       ),
       bodyText2: GoogleFonts.crimsonPro(
@@ -104,7 +108,7 @@ class Mytheme {
       bodyText1: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
           fontWeight: FontWeight.w500,
-          color: Colors.grey,
+          color: Colors.black,
           fontSize: 14.sp,
         ),
       ),
@@ -158,7 +162,7 @@ class Mytheme {
       //   ),
       // ),
     ),
-    primaryColor: Colors.black,
+    primaryColor: const Color(0xff1BBA85),
     dividerColor: Colors.white,
     indicatorColor: const Color(0xff1BBA85),
     floatingActionButtonTheme:
