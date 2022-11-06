@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
@@ -121,8 +122,14 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                     Positioned(
                       bottom: -25,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHomePage()),
+                              (Route<dynamic> route) => false);
+                        },
                         child: getButton(
+                            shadow: true,
                             radius: 30.r,
                             width: 160.h,
                             context: context,

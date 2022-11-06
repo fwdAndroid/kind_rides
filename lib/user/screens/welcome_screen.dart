@@ -82,6 +82,7 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           );
                         },
                         child: getButton(
+                          shadow: true,
                           context: context,
                           text: "Get Started",
                           alignment: MainAxisAlignment.spaceBetween,

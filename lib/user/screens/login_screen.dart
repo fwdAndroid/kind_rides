@@ -135,6 +135,7 @@ class _LoginPageState extends State<LoginPage> {
                       child: InkWell(
                         onTap: () {},
                         child: getButton(
+                            shadow: true,
                             radius: 30.r,
                             width: 160.h,
                             context: context,
@@ -150,6 +151,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 240.h,
                   child: getButton(
+                    shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
@@ -175,6 +177,7 @@ class _LoginPageState extends State<LoginPage> {
                 SizedBox(
                   width: 240.h,
                   child: getButton(
+                    shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,

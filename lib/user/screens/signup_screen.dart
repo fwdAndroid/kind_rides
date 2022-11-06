@@ -181,6 +181,7 @@ class _SignupPageState extends State<SignupPage> {
                               (Route<dynamic> route) => false);
                         },
                         child: getButton(
+                            shadow: true,
                             radius: 30.r,
                             width: 160.h,
                             context: context,
@@ -196,6 +197,7 @@ class _SignupPageState extends State<SignupPage> {
                 SizedBox(
                   width: 240.h,
                   child: getButton(
+                    shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
@@ -221,6 +223,7 @@ class _SignupPageState extends State<SignupPage> {
                 SizedBox(
                   width: 240.h,
                   child: getButton(
+                    shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,

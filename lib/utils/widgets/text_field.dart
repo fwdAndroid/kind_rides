@@ -14,6 +14,8 @@ class CTextField extends StatefulWidget {
     this.readOnly,
     this.prefixIcon,
     this.suffixIcon,
+    this.color,
+    this.style,
   });
   final String hintText;
   final bool isPasswordField;
@@ -24,6 +26,8 @@ class CTextField extends StatefulWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   bool? readOnly = false;
+  Color? color;
+  TextStyle? style;
 
   @override
   State<CTextField> createState() => _CTextFieldState(controller);
@@ -52,10 +56,11 @@ class _CTextFieldState extends State<CTextField> {
         contentPadding:
             EdgeInsets.only(top: 15.h, bottom: 15.h, left: 15.w, right: 15.w),
         hintText: widget.hintText,
-        hintStyle: GoogleFonts.dmSans(
-          fontSize: 12.sp,
-          color: Colors.grey,
-        ),
+        hintStyle: widget.style ??
+            GoogleFonts.dmSans(
+              fontSize: 12.sp,
+              color: Colors.grey,
+            ),
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(10.r),
           borderSide: const BorderSide(color: Colors.transparent, width: 0),
@@ -70,7 +75,7 @@ class _CTextFieldState extends State<CTextField> {
               BorderSide(color: Theme.of(context).indicatorColor, width: 0),
         ),
         filled: true,
-        fillColor: Colors.white,
+        fillColor: widget.color ?? Colors.white,
         prefixIcon: widget.prefixIcon,
         // suffixIconColor: Theme.of(context).indicatorColor,
         suffixIcon: widget.isPasswordField
