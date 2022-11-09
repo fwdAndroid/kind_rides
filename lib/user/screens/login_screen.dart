@@ -149,19 +149,20 @@ class _LoginPageState extends State<LoginPage> {
                   height: 80.h,
                 ),
                 SizedBox(
-                  width: 240.h,
+                  width: 250.h,
                   child: getButton(
                     shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
+                    horizontal: 10.w,
                     radius: 10.r,
                     color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/facebook.png"),
                         SizedBox(
-                          width: 10.w,
+                          width: 5.w,
                         ),
                         Text(
                           "Login with Facebook",
@@ -175,19 +176,20 @@ class _LoginPageState extends State<LoginPage> {
                   height: 15.h,
                 ),
                 SizedBox(
-                  width: 240.h,
+                  width: 250.h,
                   child: getButton(
                     shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
-                    vertical: 15.h,
+                    horizontal: 10.w,
+                    vertical: 15.w,
                     radius: 10.r,
                     color: Theme.of(context).selectedRowColor,
                     icon: Row(
                       children: [
                         Image.asset("assets/icons/google.png"),
                         SizedBox(
-                          width: 10.w,
+                          width: 5.w,
                         ),
                         Text(
                           "Login with Google",

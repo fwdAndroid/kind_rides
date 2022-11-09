@@ -195,12 +195,13 @@ class _SignupPageState extends State<SignupPage> {
                   height: 50.h,
                 ),
                 SizedBox(
-                  width: 240.h,
+                  width: 250.h,
                   child: getButton(
                     shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
+                    horizontal: 10.w,
                     radius: 10.r,
                     color: Theme.of(context).selectedRowColor,
                     icon: Row(
@@ -221,12 +222,13 @@ class _SignupPageState extends State<SignupPage> {
                   height: 15.h,
                 ),
                 SizedBox(
-                  width: 240.h,
+                  width: 250.h,
                   child: getButton(
                     shadow: false,
                     context: context,
                     alignment: MainAxisAlignment.start,
                     vertical: 15.h,
+                    horizontal: 10.w,
                     radius: 10.r,
                     color: Theme.of(context).selectedRowColor,
                     icon: Row(

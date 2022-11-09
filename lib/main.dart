@@ -1,5 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:kind_rides/user/screens/chat_screen.dart';
+import 'package:kind_rides/user/screens/driver_review_screen.dart';
+import 'package:kind_rides/user/screens/favorite_drivers_screen.dart';
+import 'package:kind_rides/user/screens/inbox_screen.dart';
+import 'package:kind_rides/user/screens/notification_screen.dart';
 import 'package:kind_rides/user/screens/splash_screen.dart';
 import 'utils/theme.dart';
 
@@ -22,7 +27,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.system,
             theme: Mytheme.lightthem,
             darkTheme: Mytheme.darkthem,
-            home: const SplashScreen(),
+            home: const ChatPage(),
           );
         });
   }

@@ -191,7 +191,7 @@ class _MainHomePageState extends State<MainHomePage> {
                   borderRadius: BorderRadius.circular(20.r),
                   color: Theme.of(context).scaffoldBackgroundColor,
                 ),
-                padding: const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
                 margin: const EdgeInsets.fromLTRB(2, 2, 2, 0),
                 child: Column(
                   children: [
@@ -201,19 +201,20 @@ class _MainHomePageState extends State<MainHomePage> {
                         InkWell(
                           onTap: () {
                             showModalBottomSheet<void>(
+                                isScrollControlled: true,
                                 // elevation: 2.h,
                                 // clipBehavior: Clip.hardEdge,
                                 context: context,
                                 builder: (BuildContext context) {
                                   return Container(
-                                    height: 310.h,
+                                    height: 315.h,
                                     decoration: BoxDecoration(
                                       borderRadius: BorderRadius.circular(20.r),
                                       color: Theme.of(context)
                                           .scaffoldBackgroundColor,
                                     ),
                                     padding:
-                                        const EdgeInsets.fromLTRB(8, 8, 8, 8),
+                                        const EdgeInsets.fromLTRB(8, 8, 8, 0),
                                     margin:
                                         const EdgeInsets.fromLTRB(2, 2, 2, 0),
                                     child: Column(
@@ -453,7 +454,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                                   )),
                                               Container(
                                                   margin: EdgeInsets.fromLTRB(
-                                                      0, 10.h, 0, 2.h),
+                                                      0, 10.h, 0, 0),
                                                   padding: EdgeInsets.fromLTRB(
                                                       10.h, 15.h, 10.h, 15.h),
                                                   decoration: BoxDecoration(

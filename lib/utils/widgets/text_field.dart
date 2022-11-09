@@ -16,6 +16,8 @@ class CTextField extends StatefulWidget {
     this.suffixIcon,
     this.color,
     this.style,
+    this.maxlines,
+    this.minlines,
   });
   final String hintText;
   final bool isPasswordField;
@@ -28,6 +30,8 @@ class CTextField extends StatefulWidget {
   bool? readOnly = false;
   Color? color;
   TextStyle? style;
+  int? minlines;
+  int? maxlines;
 
   @override
   State<CTextField> createState() => _CTextFieldState(controller);
@@ -42,6 +46,9 @@ class _CTextFieldState extends State<CTextField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      minLines: widget.minlines,
+      maxLines: widget.maxlines,
+      // expands: true,
       style: GoogleFonts.dmSans(
         fontSize: 12.sp,
         color: Colors.black,
@@ -75,6 +82,7 @@ class _CTextFieldState extends State<CTextField> {
               BorderSide(color: Theme.of(context).indicatorColor, width: 0),
         ),
         filled: true,
+
         fillColor: widget.color ?? Colors.white,
         prefixIcon: widget.prefixIcon,
         // suffixIconColor: Theme.of(context).indicatorColor,
