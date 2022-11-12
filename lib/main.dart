@@ -4,8 +4,12 @@ import 'package:kind_rides/user/screens/chat_screen.dart';
 import 'package:kind_rides/user/screens/driver_review_screen.dart';
 import 'package:kind_rides/user/screens/favorite_drivers_screen.dart';
 import 'package:kind_rides/user/screens/inbox_screen.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/notification_screen.dart';
 import 'package:kind_rides/user/screens/splash_screen.dart';
+import 'package:kind_rides/user/screens/wallet_screen.dart';
+import 'user/screens/driver_pickup_screen.dart';
+import 'user/screens/ride_start_screen.dart';
 import 'utils/theme.dart';
 
 void main() {
@@ -27,7 +31,7 @@ class MyApp extends StatelessWidget {
             themeMode: ThemeMode.system,
             theme: Mytheme.lightthem,
             darkTheme: Mytheme.darkthem,
-            home: const ChatPage(),
+            home: const SplashScreen(),
           );
         });
   }

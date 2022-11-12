@@ -42,7 +42,7 @@ Widget getButton({
       children: [
         Text(
           text ?? "",
-          style: style ?? Theme.of(context).textTheme.headline2,
+          style: style ?? Theme.of(context).textTheme.headline3,
         ),
         icon ?? Container(),
       ],

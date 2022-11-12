@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
@@ -8,6 +9,7 @@ import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
+import '../../utils/widgets/bottom_menu_bar.dart';
 
 class NotificationPage extends StatefulWidget {
   const NotificationPage({Key? key}) : super(key: key);
@@ -66,20 +68,40 @@ class _NotificationPageState extends State<NotificationPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(
-                        "assets/images/more_icon.svg",
-                        width: 13.h,
-                        height: 13.h,
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40.r),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return bottomMenuBar(context);
+                              });
+                        },
+                        child: SvgPicture.asset(
+                          "assets/images/more_icon.svg",
+                          width: 13.h,
+                          height: 13.h,
+                        ),
                       ),
-                      // SvgPicture.asset(
-                      //   "assets/images/kind.svg",
-                      // ),
                       Text(
                         "NOTIFICATIONS",
                         style: Theme.of(context).textTheme.headline2,
                       ),
                       //SizedBox(width: 75.h),
-                      Icon(Icons.home, color: Colors.black, size: 20.h),
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHomePage()),
+                            );
+                          },
+                          child: Icon(Icons.home,
+                              color: Colors.black, size: 20.h)),
                     ],
                   ),
                 ),
@@ -107,7 +129,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       color: Theme.of(context).hoverColor,
                       width: 100.w,
                       text: "Generals (3)",
-                      style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                      style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                       vertical: 3.h,
                       horizontal: 3.h,
                     ),
@@ -118,7 +140,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       color: Theme.of(context).hoverColor,
                       width: 150.w,
                       text: "Recommendations (0)",
-                      style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                      style: TextStyle(color: Colors.grey, fontSize: 12.sp),
                       vertical: 3.h,
                       horizontal: 3.h,
                     ),

@@ -1,12 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
+import 'package:kind_rides/user/screens/notification_screen.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
+import '../../utils/widgets/bottom_menu_bar.dart';
 
 class DriverReviewPage extends StatefulWidget {
   const DriverReviewPage({Key? key}) : super(key: key);
@@ -65,17 +68,42 @@ class _DriverReviewPageState extends State<DriverReviewPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(
-                        "assets/images/more_icon.svg",
-                        width: 13.h,
-                        height: 13.h,
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40.r),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return bottomMenuBar(context);
+                              });
+                        },
+                        child: SvgPicture.asset(
+                          "assets/images/more_icon.svg",
+                          width: 13.h,
+                          height: 13.h,
+                        ),
                       ),
+
                       SvgPicture.asset(
                         "assets/images/kind.svg",
                       ),
                       //SizedBox(width: 75.h),
-                      Icon(Icons.notifications,
-                          color: Colors.black, size: 20.h),
+                      InkWell(
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.of(context).push(
+                            MaterialPageRoute(
+                                builder: (context) => const NotificationPage()),
+                          );
+                        },
+                        child: Icon(Icons.notifications,
+                            color: Colors.black, size: 20.h),
+                      ),
                     ],
                   ),
                 ),
@@ -112,6 +140,7 @@ class _DriverReviewPageState extends State<DriverReviewPage> {
                 ),
                 CircleAvatar(
                   backgroundColor: Colors.blueGrey,
+                  backgroundImage: AssetImage('assets/images/p1.png'),
                   radius: 60.r,
                 ),
                 Text(
@@ -171,7 +200,7 @@ class _DriverReviewPageState extends State<DriverReviewPage> {
                 ),
                 Text(
                   "Add a tip",
-                  style: Theme.of(context).textTheme.headline4,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 SizedBox(
                   height: 5.h,
@@ -259,29 +288,37 @@ class _DriverReviewPageState extends State<DriverReviewPage> {
                   ),
                 ),
                 SizedBox(
+                  height: 25.h,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.pop(context);
+                    Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => const MainHomePage()),
+                    );
+                  },
+                  child: getButton(
+                    context: context,
+                    alignment: MainAxisAlignment.center,
+                    shadow: true,
+                    // color: Theme.of(context).hoverColor,
+                    width: 150.w,
+                    text: "SUBMIT",
+                    // style: TextStyle(color: Colors.black, fontSize: 12.sp),
+                    vertical: 5.h,
+                    horizontal: 12.h,
+                  ),
+                ),
+                SizedBox(
                   height: 15.h,
                 ),
-                getButton(
-                  context: context,
-                  alignment: MainAxisAlignment.center,
-                  shadow: true,
-                  // color: Theme.of(context).hoverColor,
-                  width: 150.w,
-                  text: "SUBMIT",
-                  // style: TextStyle(color: Colors.black, fontSize: 12.sp),
-                  vertical: 5.h,
-                  horizontal: 12.h,
-                ),
-                getButton(
-                  context: context,
-                  alignment: MainAxisAlignment.center,
-                  shadow: false,
-                  color: Theme.of(context).hoverColor,
-                  width: 35.w,
-                  text: "skip",
-                  style: TextStyle(color: Colors.black, fontSize: 12.sp),
-                  vertical: 3.h,
-                  horizontal: 3.h,
+                InkWell(
+                  onTap: () {},
+                  child: Text(
+                    "Skip",
+                    style: TextStyle(color: Colors.grey, fontSize: 12.sp),
+                  ),
                 ),
               ],
             ),

@@ -65,16 +65,16 @@ class Mytheme {
   );
 
   static final lightthem = ThemeData(
-    cardColor: Color.fromARGB(255, 245, 249, 249),
+    cardColor: Color(0xFFd9d9d9).withOpacity(0.2),
     hintColor: Color.fromARGB(255, 24, 25, 25),
-    splashColor: Color.fromARGB(255, 212, 249, 251),
+    splashColor: Color(0xFF9bd8db).withOpacity(0.5),
     selectedRowColor: Color.fromARGB(255, 240, 241, 241),
     textTheme: TextTheme(
       headline1: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
           fontWeight: FontWeight.w900,
           color: Colors.black,
-          fontSize: 30.sp,
+          fontSize: 34.sp,
         ),
       ),
       headline2: GoogleFonts.crimsonPro(
@@ -86,7 +86,7 @@ class Mytheme {
       ),
       headline3: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w900,
           color: Colors.black,
           fontSize: 18.sp,
         ),
@@ -96,6 +96,13 @@ class Mytheme {
           fontWeight: FontWeight.w700,
           fontSize: 16.sp,
           color: Colors.black,
+        ),
+      ),
+      headline5: GoogleFonts.crimsonPro(
+        textStyle: TextStyle(
+          fontWeight: FontWeight.w600,
+          fontSize: 14.sp,
+          color: Colors.grey.shade500,
         ),
       ),
       bodyText2: GoogleFonts.crimsonPro(
@@ -114,9 +121,9 @@ class Mytheme {
       ),
       button: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
-          color: Colors.white,
+          color: Colors.black,
           fontSize: 16.sp,
-          fontWeight: FontWeight.w600,
+          fontWeight: FontWeight.w800,
         ),
       ),
     ),

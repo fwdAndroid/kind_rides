@@ -18,6 +18,7 @@ class CTextField extends StatefulWidget {
     this.style,
     this.maxlines,
     this.minlines,
+    this.radius,
   });
   final String hintText;
   final bool isPasswordField;
@@ -32,6 +33,7 @@ class CTextField extends StatefulWidget {
   TextStyle? style;
   int? minlines;
   int? maxlines;
+  double? radius;
 
   @override
   State<CTextField> createState() => _CTextFieldState(controller);
@@ -69,15 +71,15 @@ class _CTextFieldState extends State<CTextField> {
               color: Colors.grey,
             ),
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(widget.radius ?? 10.r),
           borderSide: const BorderSide(color: Colors.transparent, width: 0),
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(widget.radius ?? 10.r),
           borderSide: const BorderSide(color: Colors.transparent, width: 0),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(10.r),
+          borderRadius: BorderRadius.circular(widget.radius ?? 10.r),
           borderSide:
               BorderSide(color: Theme.of(context).indicatorColor, width: 0),
         ),

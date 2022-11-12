@@ -8,6 +8,8 @@ import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
+import '../../utils/widgets/bottom_menu_bar.dart';
+import 'main_home.dart';
 
 class InboxPage extends StatefulWidget {
   const InboxPage({Key? key}) : super(key: key);
@@ -60,6 +62,7 @@ class _InboxPageState extends State<InboxPage> {
               children: [
                 CircleAvatar(
                   backgroundColor: Colors.blueGrey,
+                  backgroundImage: AssetImage(url),
                   //  radius: 25.r,
                 ),
                 SizedBox(
@@ -147,10 +150,25 @@ class _InboxPageState extends State<InboxPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(
-                        "assets/images/more_icon.svg",
-                        width: 13.h,
-                        height: 13.h,
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40.r),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return bottomMenuBar(context);
+                              });
+                        },
+                        child: SvgPicture.asset(
+                          "assets/images/more_icon.svg",
+                          width: 13.h,
+                          height: 13.h,
+                        ),
                       ),
                       // SvgPicture.asset(
                       //   "assets/images/kind.svg",
@@ -160,7 +178,15 @@ class _InboxPageState extends State<InboxPage> {
                         style: Theme.of(context).textTheme.headline2,
                       ),
                       //SizedBox(width: 75.h),
-                      Icon(Icons.home, color: Colors.black, size: 20.h),
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHomePage()),
+                            );
+                          },
+                          child: Icon(Icons.home,
+                              color: Colors.black, size: 20.h)),
                     ],
                   ),
                 ),
@@ -201,38 +227,38 @@ class _InboxPageState extends State<InboxPage> {
                 ),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p3.png',
                     description:
                         "gug gyugeu geugeuygeu  twrtf fsr swrc uhubn egugueugeu geyugeugeug",
                     name: "mark",
                     chats: 0),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p2.png',
                     description: "gvy ge yewf yewiqhih",
                     name: "elsa",
                     chats: 4),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p1.png',
                     description: "qgu qyyv",
                     name: "malik",
                     chats: 3),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p3.png',
                     description: "ewqubu uqugu quegu.2",
                     chats: 2,
                     name: "babar"),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p2.png',
                     description: "qgu qyyv",
                     name: "maya",
                     chats: 0),
                 getInboxCard(
                     context: context,
-                    url: "",
+                    url: 'assets/images/p1.png',
                     description: "ewqubu uqugu quegu.2",
                     chats: 2,
                     name: "babar"),

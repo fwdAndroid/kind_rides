@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
@@ -50,12 +51,12 @@ class _LoginPageState extends State<LoginPage> {
                       child: Column(
                         children: [
                           Text(
-                            "Log In",
+                            "Login.",
                             style: Theme.of(context).textTheme.headline1,
                           ),
                           Text(
                             "Log In to your account",
-                            style: Theme.of(context).textTheme.headline4,
+                            style: Theme.of(context).textTheme.headline5,
                           ),
                           SizedBox(
                             height: 35.h,
@@ -72,7 +73,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Icons.person_outline_outlined,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Email / Phone Number",
@@ -85,6 +86,7 @@ class _LoginPageState extends State<LoginPage> {
                             height: 10.h,
                           ),
                           CTextField(
+                            maxlines: 1,
                             prefixIcon: Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).splashColor,
@@ -95,7 +97,7 @@ class _LoginPageState extends State<LoginPage> {
                                 Icons.lock_outline_rounded,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Password",
@@ -119,7 +121,10 @@ class _LoginPageState extends State<LoginPage> {
                                 },
                                 child: Text(
                                   "Forgot Password?     ",
-                                  style: Theme.of(context).textTheme.bodyText2,
+                                  style: Theme.of(context)
+                                      .textTheme
+                                      .bodyText1!
+                                      .copyWith(color: Colors.grey.shade700),
                                 ),
                               ),
                             ],
@@ -133,7 +138,12 @@ class _LoginPageState extends State<LoginPage> {
                     Positioned(
                       bottom: -25,
                       child: InkWell(
-                        onTap: () {},
+                        onTap: () {
+                          Navigator.of(context).pushAndRemoveUntil(
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHomePage()),
+                              (Route<dynamic> route) => false);
+                        },
                         child: getButton(
                             shadow: true,
                             radius: 30.r,
@@ -162,11 +172,11 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Image.asset("assets/icons/facebook.png"),
                         SizedBox(
-                          width: 5.w,
+                          width: 8.w,
                         ),
                         Text(
                           "Login with Facebook",
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.headline4,
                         )
                       ],
                     ),
@@ -189,11 +199,11 @@ class _LoginPageState extends State<LoginPage> {
                       children: [
                         Image.asset("assets/icons/google.png"),
                         SizedBox(
-                          width: 5.w,
+                          width: 8.w,
                         ),
                         Text(
                           "Login with Google",
-                          style: Theme.of(context).textTheme.headline3,
+                          style: Theme.of(context).textTheme.headline4,
                         )
                       ],
                     ),
@@ -211,7 +221,7 @@ class _LoginPageState extends State<LoginPage> {
                   },
                   child: Text(
                     "Don't have an account?",
-                    style: Theme.of(context).textTheme.headline4,
+                    style: Theme.of(context).textTheme.bodyLarge,
                   ),
                 ),
               ],

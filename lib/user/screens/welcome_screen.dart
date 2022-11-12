@@ -35,12 +35,31 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
           alignment: AlignmentDirectional.topCenter,
           children: [
             Positioned(
-              top: -180,
+              top: -180.h,
+              left: -100.h,
+              right: -180.w,
+              child: SizedBox(
+                child: SvgPicture.asset(
+                  'assets/images/bg_ellipse.svg',
+                  color: Color(0xFF9bd8db).withOpacity(0.32),
+                  // Image.asset(
+                  //   'assets/images/bg_ellipse.png',
+                  // color: t,
+                  // height: 200.h,
+                  // width: 200.h,
+                ),
+              ),
+            ),
+            Positioned(
+              top: 90,
               left: -100,
               right: -180,
               child: SizedBox(
-                child: Image.asset(
-                  'assets/images/get_started.png',
+                child: SvgPicture.asset(
+                  'assets/images/car_bg_thumbnail.svg',
+                  //   color: Color(0xFF9bd8db).withOpacity(0.32),
+                  // Image.asset(
+                  //   'assets/images/bg_ellipse.png',
                   // color: t,
                   // height: 200.h,
                   // width: 200.h,
@@ -62,14 +81,20 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                       ),
                       Text(
                         "Let's get started to catch a cab.",
-                        style: Theme.of(context).textTheme.headline4,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headline4!
+                            .copyWith(color: Colors.grey.shade300),
                       ),
                       SizedBox(
                         height: 20.h,
                       ),
                       Text(
                         "Consequatur placeat necessitatibus\nsaepefacere magni quaerat.\nMolestiae pariatur asperiores\npraesentium neque minus et qui.\nAsperiores quasi repellendus ut earum\nvoluptas hic. Earum praesentium\nsunt culpa placeat doloribus\nautem. Error occaecati quibusdam",
-                        style: Theme.of(context).textTheme.bodyText2,
+                        style: Theme.of(context)
+                            .textTheme
+                            .bodyText2!
+                            .copyWith(color: Color.fromARGB(255, 2, 78, 57)),
                       ),
                       SizedBox(
                         height: 20.h,
@@ -82,11 +107,14 @@ class _WelcomeScreenState extends State<WelcomeScreen> {
                           );
                         },
                         child: getButton(
-                          shadow: true,
+                          shadow: false,
                           context: context,
                           text: "Get Started",
                           alignment: MainAxisAlignment.spaceBetween,
-                          icon: Icon(Icons.navigate_next),
+                          icon: Icon(
+                            Icons.navigate_next,
+                            color: Color(Constants.darkGreen),
+                          ),
                         ),
                       )
                     ],

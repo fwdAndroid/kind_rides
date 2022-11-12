@@ -80,15 +80,14 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                             style: Theme.of(context).textTheme.headline1,
                           ),
                           Text(
-                            "We are sending otp on your number\nto verify your number +92312****036",
-                            style: Theme.of(context).textTheme.bodyText1,
-                          ),
+                              "We are sending otp on your number\nto verify your number +92312****036",
+                              style: Theme.of(context).textTheme.headline5),
                           SizedBox(
                             height: 50.h,
                           ),
                           Text(
                             "Please enter your code",
-                            style: Theme.of(context).textTheme.bodyText1,
+                            style: Theme.of(context).textTheme.headline5,
                           ),
                           SizedBox(
                             height: 10.h,
@@ -144,7 +143,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                 ),
                 Text(
                   "Didn't get code?",
-                  style: Theme.of(context).textTheme.bodyText1,
+                  style: Theme.of(context).textTheme.headline5,
                 ),
                 InkWell(
                   onTap: () {
@@ -155,7 +154,7 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                   },
                   child: Text(
                     "Resend code",
-                    style: Theme.of(context).textTheme.headline3,
+                    style: Theme.of(context).textTheme.headline4,
                   ),
                 ),
               ],

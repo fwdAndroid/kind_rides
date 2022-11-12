@@ -50,13 +50,11 @@ class _SignupPageState extends State<SignupPage> {
                       ),
                       child: Column(
                         children: [
+                          Text("Register.",
+                              style: Theme.of(context).textTheme.headline1),
                           Text(
-                            "Register",
-                            style: Theme.of(context).textTheme.headline1,
-                          ),
-                          Text(
-                            "Register your account",
-                            style: Theme.of(context).textTheme.headline4,
+                            "Register your account to kind",
+                            style: Theme.of(context).textTheme.headline5,
                           ),
                           SizedBox(
                             height: 30.h,
@@ -73,7 +71,7 @@ class _SignupPageState extends State<SignupPage> {
                                 Icons.person_outline_outlined,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Email / Phone Number",
@@ -86,6 +84,7 @@ class _SignupPageState extends State<SignupPage> {
                             height: 6.h,
                           ),
                           CTextField(
+                            maxlines: 1,
                             prefixIcon: Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).splashColor,
@@ -96,7 +95,7 @@ class _SignupPageState extends State<SignupPage> {
                                 Icons.lock_outline_rounded,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Password",
@@ -109,6 +108,7 @@ class _SignupPageState extends State<SignupPage> {
                             height: 6.h,
                           ),
                           CTextField(
+                            maxlines: 1,
                             prefixIcon: Container(
                               decoration: BoxDecoration(
                                 color: Theme.of(context).splashColor,
@@ -119,7 +119,7 @@ class _SignupPageState extends State<SignupPage> {
                                 Icons.lock_outline_rounded,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Confirm Password",
@@ -142,7 +142,7 @@ class _SignupPageState extends State<SignupPage> {
                                 Icons.phone,
                                 color: Color(
                                   Constants.greenIcon,
-                                ),
+                                ).withOpacity(0.7),
                               ),
                             ),
                             hintText: "Mobile Phone",
@@ -164,8 +164,15 @@ class _SignupPageState extends State<SignupPage> {
                         children: [
                           Checkbox(value: false, onChanged: (value) {}),
                           Text(
-                            "I agree to Terms & Conditions and Privacy policy. ",
+                            "I agree to ",
                             style: Theme.of(context).textTheme.bodySmall,
+                          ),
+                          Text(
+                            "Terms & Conditions and Privacy policy. ",
+                            style: Theme.of(context)
+                                .textTheme
+                                .bodySmall!
+                                .copyWith(fontWeight: FontWeight.w600),
                           ),
                         ],
                       ),

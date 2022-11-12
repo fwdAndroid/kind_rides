@@ -37,6 +37,10 @@ Widget getNotificationCard({
           children: [
             CircleAvatar(
               backgroundColor: Colors.blueGrey,
+              backgroundImage: AssetImage(
+                'assets/images/p3.png',
+              ),
+
               //  radius: 25.r,
             ),
             SizedBox(
@@ -47,7 +51,7 @@ Widget getNotificationCard({
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "name",
+                    "mark",
                     style: Theme.of(context).textTheme.headline3,
                   ),
                   Text(

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
@@ -9,6 +10,7 @@ import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
+import '../../utils/widgets/bottom_menu_bar.dart';
 
 class FavoriteDriverPage extends StatefulWidget {
   const FavoriteDriverPage({Key? key}) : super(key: key);
@@ -56,6 +58,7 @@ class _FavoriteDriverPageState extends State<FavoriteDriverPage> {
                     children: [
                       CircleAvatar(
                         backgroundColor: Colors.blueGrey,
+                        backgroundImage: AssetImage(url),
                         //  radius: 25.r,
                       ),
                       SizedBox(
@@ -127,13 +130,25 @@ class _FavoriteDriverPageState extends State<FavoriteDriverPage> {
     Widget favourite() {
       return Column(children: [
         getFavoriteDriverCard(
-            context: context, url: "", description: "3.2", name: "mark"),
+            context: context,
+            url: 'assets/images/p1.png',
+            description: "3.2",
+            name: "mark"),
         getFavoriteDriverCard(
-            context: context, url: "", description: "4.2", name: "elsa"),
+            context: context,
+            url: 'assets/images/p2.png',
+            description: "4.2",
+            name: "elsa"),
         getFavoriteDriverCard(
-            context: context, url: "", description: "2.1", name: "malik"),
+            context: context,
+            url: 'assets/images/p3.png',
+            description: "2.1",
+            name: "malik"),
         getFavoriteDriverCard(
-            context: context, url: "", description: "1.2", name: "babar"),
+            context: context,
+            url: 'assets/images/p2.png',
+            description: "1.2",
+            name: "babar"),
       ]);
     }
 
@@ -205,20 +220,40 @@ class _FavoriteDriverPageState extends State<FavoriteDriverPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      SvgPicture.asset(
-                        "assets/images/more_icon.svg",
-                        width: 13.h,
-                        height: 13.h,
+                      InkWell(
+                        onTap: () {
+                          showModalBottomSheet<void>(
+                              isScrollControlled: true,
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.vertical(
+                                  top: Radius.circular(40.r),
+                                ),
+                              ),
+                              context: context,
+                              builder: (BuildContext context) {
+                                return bottomMenuBar(context);
+                              });
+                        },
+                        child: SvgPicture.asset(
+                          "assets/images/more_icon.svg",
+                          width: 13.h,
+                          height: 13.h,
+                        ),
                       ),
-                      // SvgPicture.asset(
-                      //   "assets/images/kind.svg",
-                      // ),
                       Text(
                         "FAVOURITE DRIVERS",
                         style: Theme.of(context).textTheme.headline2,
                       ),
                       //SizedBox(width: 75.h),
-                      Icon(Icons.home, color: Colors.black, size: 20.h),
+                      InkWell(
+                          onTap: () {
+                            Navigator.of(context).push(
+                              MaterialPageRoute(
+                                  builder: (context) => const MainHomePage()),
+                            );
+                          },
+                          child: Icon(Icons.home,
+                              color: Colors.black, size: 20.h)),
                     ],
                   ),
                 ),

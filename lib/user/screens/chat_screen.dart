@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
 import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
@@ -8,6 +9,7 @@ import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
+import '../../utils/widgets/bottom_menu_bar.dart';
 
 class ChatPage extends StatefulWidget {
   const ChatPage({Key? key}) : super(key: key);
@@ -60,7 +62,7 @@ class _ChatPageState extends State<ChatPage> {
                             const TextStyle(color: Colors.grey, fontSize: 15),
                         controller: passwordController,
                         decoration: const InputDecoration.collapsed(
-                          hintText: 'Message',
+                          hintText: '  Message',
                           hintStyle: TextStyle(color: Colors.grey),
                         ),
                         //    focusNode: focusNode,
@@ -70,7 +72,7 @@ class _ChatPageState extends State<ChatPage> {
                     // Button send message
 
                     IconButton(
-                      icon: const Icon(Icons.file_present_outlined),
+                      icon: const Icon(Icons.attach_file),
                       onPressed: () {},
                       color: Colors.grey,
                     ),
@@ -148,12 +150,9 @@ class _ChatPageState extends State<ChatPage> {
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 10.h, vertical: 5.h),
-          child: Stack(alignment: AlignmentDirectional.topCenter, children: [
-            Positioned(
-              top: 0,
-              left: 0,
-              right: 0,
-              child: Container(
+          child: Column(
+            children: [
+              Container(
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8.r),
                   color: Theme.of(context).cardColor,
@@ -163,16 +162,32 @@ class _ChatPageState extends State<ChatPage> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    SvgPicture.asset(
-                      "assets/images/more_icon.svg",
-                      width: 13.h,
-                      height: 13.h,
+                    InkWell(
+                      onTap: () {
+                        showModalBottomSheet<void>(
+                            isScrollControlled: true,
+                            shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.vertical(
+                                top: Radius.circular(40.r),
+                              ),
+                            ),
+                            context: context,
+                            builder: (BuildContext context) {
+                              return bottomMenuBar(context);
+                            });
+                      },
+                      child: SvgPicture.asset(
+                        "assets/images/more_icon.svg",
+                        width: 13.h,
+                        height: 13.h,
+                      ),
                     ),
                     // SvgPicture.asset(
                     //   "assets/images/kind.svg",
                     // ),
                     Column(
                       mainAxisAlignment: MainAxisAlignment.center,
+                      mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
                           "Malik",
@@ -185,72 +200,77 @@ class _ChatPageState extends State<ChatPage> {
                       ],
                     ),
                     //SizedBox(width: 75.h),
-                    Icon(Icons.home, color: Colors.black, size: 20.h),
+                    InkWell(
+                      child: Icon(Icons.home, color: Colors.black, size: 20.h),
+                      onTap: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                              builder: (context) => const MainHomePage()),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
-            ),
-            SingleChildScrollView(
-              //  physics: BouncingScrollPhysics(),
-              child: Column(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(
-                    height: 75.h,
-                  ),
-                  Text(
-                    "yesteday",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: getSend("gg ygy ygyy yggugug"),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: getRecieve("gg ygy ygyy yggugug"),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: getSend(
-                        "gg ygy hjgj hghg ghgh ghgh fhfhg fyfyf  ygyy yggugug"),
-                  ),
-                  SizedBox(
-                    height: 20.h,
-                  ),
-                  Text(
-                    "today",
-                    style: Theme.of(context).textTheme.bodyText1,
-                  ),
-                  SizedBox(
-                    height: 10.h,
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: getRecieve(
-                        "gg ygy hjgj hghg ghgh ghgh fhfhg fyfyf  ygyy yggugug"),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child:
-                        getSend("gg ygy ygyy yg hh gug yyf yfytfy fyfygugug"),
-                  ),
-                  Align(
-                    alignment: Alignment.topLeft,
-                    child: getRecieve(
-                        "gg ygy ygyy yg hh gug yyf yfytfy fyfygugug"),
-                  ),
-                  Align(
-                    alignment: Alignment.topRight,
-                    child: getSend("gg ygy ygyy yggugug"),
-                  ),
-                ],
+              SingleChildScrollView(
+                //  physics: BouncingScrollPhysics(),
+                child: Column(
+                  //   crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Text(
+                      "yesteday",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: getSend("gg ygy ygyy yggugug"),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: getRecieve("gg ygy ygyy yggugug"),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: getSend(
+                          "gg ygy hjgj hghg ghgh ghgh fhfhg fyfyf  ygyy yggugug"),
+                    ),
+                    SizedBox(
+                      height: 20.h,
+                    ),
+                    Text(
+                      "today",
+                      style: Theme.of(context).textTheme.bodyText1,
+                    ),
+                    SizedBox(
+                      height: 10.h,
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: getRecieve(
+                          "gg ygy hjgj hghg ghgh ghgh fhfhg fyfyf  ygyy yggugug"),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child:
+                          getSend("gg ygy ygyy yg hh gug yyf yfytfy fyfygugug"),
+                    ),
+                    Align(
+                      alignment: Alignment.topLeft,
+                      child: getRecieve(
+                          "gg ygy ygyy yg hh gug yyf yfytfy fyfygugug"),
+                    ),
+                    Align(
+                      alignment: Alignment.topRight,
+                      child: getSend("gg ygy ygyy yggugug"),
+                    ),
+                  ],
+                ),
               ),
-            ),
-          ]),
+            ],
+          ),
         ),
       ),
       //    Positioned(left: 0, right: 0, bottom: 0, child: buildInput()),
