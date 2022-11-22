@@ -15,10 +15,10 @@ class ThemProvider extends ChangeNotifier {
 
 class Mytheme {
   static final darkthem = ThemeData(
-    cardColor: Color(0xFFd9d9d9).withOpacity(0.2),
-    hintColor: Color.fromARGB(255, 24, 25, 25),
-    splashColor: Color(0xFF9bd8db).withOpacity(0.5),
-    selectedRowColor: Color.fromARGB(255, 240, 241, 241),
+    cardColor: const Color(0xFFd9d9d9).withOpacity(0.2),
+    hintColor: const Color.fromARGB(255, 24, 25, 25),
+    splashColor: const Color(0xFF9bd8db).withOpacity(0.5),
+    selectedRowColor: const Color.fromARGB(255, 240, 241, 241),
     textTheme: TextTheme(
       headline1: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
@@ -58,7 +58,7 @@ class Mytheme {
       bodyText2: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
           fontWeight: FontWeight.w600,
-          color: Color.fromARGB(255, 14, 133, 84),
+          color: const Color.fromARGB(255, 14, 133, 84),
           fontSize: 14.sp,
         ),
       ),
@@ -84,7 +84,7 @@ class Mytheme {
         backgroundColor: MaterialStateProperty.resolveWith((states) {
           // If the button is pressed, return green, otherwise blue
           if (states.contains(MaterialState.pressed)) {
-            return Color(0xff1BBA85);
+            return const Color(0xff1BBA85);
           }
           return Color(Constants.buttonGrey);
         }),
@@ -107,17 +107,6 @@ class Mytheme {
         }),
         // shape:RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
       ),
-
-      //ElevatedButton.styleFrom(
-
-      //  // backgroundColor: const Color.fromARGB(255, 170, 173, 175),
-      //   shape:
-      //       RoundedRectangleBorder(borderRadius: BorderRadius.circular(15.0)),
-      //   padding: EdgeInsets.symmetric(vertical: 15.h),
-      //   textStyle: const TextStyle(
-      //     fontWeight: FontWeight.w600,
-      //   ),
-      // ),
     ),
     primaryColor: const Color(0xff1BBA85),
     dividerColor: Colors.white,
@@ -128,10 +117,10 @@ class Mytheme {
   );
 
   static final lightthem = ThemeData(
-    cardColor: Color(0xFFd9d9d9).withOpacity(0.2),
-    hintColor: Color.fromARGB(255, 24, 25, 25),
-    splashColor: Color(0xFF9bd8db).withOpacity(0.5),
-    selectedRowColor: Color.fromARGB(255, 240, 241, 241),
+    cardColor: const Color(0xFFd9d9d9).withOpacity(0.2),
+    hintColor: const Color.fromARGB(255, 24, 25, 25),
+    splashColor: const Color(0xFF9bd8db).withOpacity(0.5),
+    selectedRowColor: const Color.fromARGB(255, 240, 241, 241),
     textTheme: TextTheme(
       headline1: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
@@ -171,7 +160,7 @@ class Mytheme {
       bodyText2: GoogleFonts.crimsonPro(
         textStyle: TextStyle(
           fontWeight: FontWeight.w600,
-          color: Color.fromARGB(255, 14, 133, 84),
+          color: const Color.fromARGB(255, 14, 133, 84),
           fontSize: 14.sp,
         ),
       ),
@@ -197,7 +186,7 @@ class Mytheme {
         backgroundColor: MaterialStateProperty.resolveWith((states) {
           // If the button is pressed, return green, otherwise blue
           if (states.contains(MaterialState.pressed)) {
-            return Color(0xff1BBA85);
+            return const Color(0xff1BBA85);
           }
           return Color(Constants.buttonGrey);
         }),

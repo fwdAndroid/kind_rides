@@ -13,7 +13,7 @@ Widget bottomMenuBar(context) {
   return Container(
     height: 600.h,
     decoration: BoxDecoration(
-      borderRadius: BorderRadius.only(
+      borderRadius: const BorderRadius.only(
           topLeft: Radius.circular(10.0), topRight: Radius.circular(10.0)),
       //  borderRadius: BorderRadius.circular(40.r),
       color: Theme.of(context).scaffoldBackgroundColor,
@@ -25,7 +25,7 @@ Widget bottomMenuBar(context) {
         Positioned(
             top: -50,
             child: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                 boxShadow: <BoxShadow>[
                   BoxShadow(
                       color: Color.fromARGB(133, 37, 175, 172),

@@ -2,12 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/main_home.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
-import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/notification_card.dart';
-import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/bottom_menu_bar.dart';
 
@@ -28,7 +22,7 @@ class _ChatPageState extends State<ChatPage> {
       return Padding(
         padding:
             EdgeInsets.only(left: 10.h, right: 10.h, bottom: 10.h, top: 10.h),
-        child: Container(
+        child: SizedBox(
           width: double.infinity,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -81,7 +75,7 @@ class _ChatPageState extends State<ChatPage> {
               ),
               InkWell(
                 onTap: () {},
-                child: Container(
+                child: SizedBox(
                   width: 45.h,
                   height: 45.h,
                   child: Icon(
@@ -105,7 +99,7 @@ class _ChatPageState extends State<ChatPage> {
           color: Theme.of(context).cardColor,
         ),
         //Theme.of(context).hoverColor),
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
         margin: EdgeInsets.only(right: 150.h, bottom: 5.h),
         child: Text(
           text,
@@ -129,7 +123,7 @@ class _ChatPageState extends State<ChatPage> {
           color: Color(Constants.greenDark),
         ),
         //Theme.of(context).hoverColor),
-        padding: EdgeInsets.all(6),
+        padding: const EdgeInsets.all(6),
         margin: EdgeInsets.only(left: 150, bottom: 5.h),
         child: Text(
           maxLines: 4,

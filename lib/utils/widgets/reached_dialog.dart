@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/text_field.dart';
 
 import '../../user/screens/driver_review_screen.dart';
-import 'date_dialog.dart';
 
 class ReachedDialog extends StatefulWidget {
   const ReachedDialog({

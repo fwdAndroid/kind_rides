@@ -30,7 +30,6 @@ class _DateDialogState extends State<DateDialog> {
 
   @override
   Widget build(BuildContext context) {
-    DateTime selectedDate = DateTime.now();
     return Stack(
       alignment: Alignment.center,
       children: [
@@ -67,7 +66,7 @@ class _DateDialogState extends State<DateDialog> {
                         child: Container(
                           width: 250.w,
                           height: 50.w,
-                          padding: EdgeInsets.fromLTRB(16, 8, 6, 0),
+                          padding: const EdgeInsets.fromLTRB(16, 8, 6, 0),
                           decoration: BoxDecoration(
                             color: Colors.grey.withOpacity(0.2),
                             borderRadius: BorderRadius.circular(10.r),

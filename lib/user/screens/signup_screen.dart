@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
@@ -5,7 +6,7 @@ import 'package:kind_rides/user/screens/login_screen.dart';
 import 'package:kind_rides/user/screens/otp_verification_screen.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../utils/constants.dart';
 
 class SignupPage extends StatefulWidget {
@@ -18,6 +19,10 @@ class SignupPage extends StatefulWidget {
 class _SignupPageState extends State<SignupPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  TextEditingController phoneController = TextEditingController();
+  TextEditingController confirmPasswordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  FirebaseAuth auth = FirebaseAuth.instance;
 
   @override
   Widget build(BuildContext context) {
@@ -59,100 +64,107 @@ class _SignupPageState extends State<SignupPage> {
                           SizedBox(
                             height: 30.h,
                           ),
-                          CTextField(
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: EdgeInsets.all(6),
-                              //    padding: EdgeInsets.all(3),
-                              child: Icon(
-                                Icons.person_outline_outlined,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
+                          Form(
+                            key: formKey,
+                            child: Column(
+                              children: [
+                                CTextField(
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: const EdgeInsets.all(6),
+                                    //    padding: EdgeInsets.all(3),
+                                    child: Icon(
+                                      Icons.person_outline_outlined,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Email / Phone Number",
+                                  isPasswordField: false,
+                                  controller: emailController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                CTextField(
+                                  maxlines: 1,
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Password",
+                                  isPasswordField: true,
+                                  controller: passwordController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                CTextField(
+                                  maxlines: 1,
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Confirm Password",
+                                  isPasswordField: true,
+                                  controller: confirmPasswordController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                                SizedBox(
+                                  height: 6.h,
+                                ),
+                                CTextField(
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.phone,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Mobile Phone",
+                                  isPasswordField: false,
+                                  controller: phoneController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                                SizedBox(
+                                  height: 35.h,
+                                ),
+                              ],
                             ),
-                            hintText: "Email / Phone Number",
-                            isPasswordField: false,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
-                          ),
-                          SizedBox(
-                            height: 6.h,
-                          ),
-                          CTextField(
-                            maxlines: 1,
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: EdgeInsets.all(6),
-                              child: Icon(
-                                Icons.lock_outline_rounded,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
-                            ),
-                            hintText: "Password",
-                            isPasswordField: true,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
-                          ),
-                          SizedBox(
-                            height: 6.h,
-                          ),
-                          CTextField(
-                            maxlines: 1,
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: EdgeInsets.all(6),
-                              child: Icon(
-                                Icons.lock_outline_rounded,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
-                            ),
-                            hintText: "Confirm Password",
-                            isPasswordField: true,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
-                          ),
-                          SizedBox(
-                            height: 6.h,
-                          ),
-                          CTextField(
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: EdgeInsets.all(6),
-                              child: Icon(
-                                Icons.phone,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
-                            ),
-                            hintText: "Mobile Phone",
-                            isPasswordField: false,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
-                          ),
-                          SizedBox(
-                            height: 35.h,
                           ),
                         ],
                       ),
@@ -181,11 +193,16 @@ class _SignupPageState extends State<SignupPage> {
                       bottom: -25,
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const OTPVerificationPage()),
-                              (Route<dynamic> route) => false);
+                          if (formKey.currentState!.validate()) {
+                            auth.createUserWithEmailAndPassword(
+                                email: emailController.text.toString(),
+                                password: passwordController.text.toString());
+                          }
+                          // Navigator.of(context).pushAndRemoveUntil(
+                          //     MaterialPageRoute(
+                          //         builder: (context) =>
+                          //             const OTPVerificationPage()),
+                          //     (Route<dynamic> route) => false);
                         },
                         child: getButton(
                             shadow: true,

@@ -2,14 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/notification_screen.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/confirmed_location_dialog.dart';
 import 'package:kind_rides/utils/widgets/date_time_dialog.dart';
 import 'package:kind_rides/utils/widgets/health_dialog.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/bottom_menu_bar.dart';
 
@@ -50,7 +47,7 @@ class _MainHomePageState extends State<MainHomePage> {
                         color: Colors.grey.shade100,
                         borderRadius: BorderRadius.circular(10.r),
                       ),
-                      padding: EdgeInsets.all(8),
+                      padding: const EdgeInsets.all(8),
                       child: Column(children: [
                         Image.asset(
                           "assets/images/ride.png",
@@ -90,11 +87,11 @@ class _MainHomePageState extends State<MainHomePage> {
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(20.r),
                         ),
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Icon(Icons.chair_alt_outlined),
+                            const Icon(Icons.chair_alt_outlined),
                             Text(
                               "Extra Seat",
                               style: Theme.of(context).textTheme.bodyText1,
@@ -131,11 +128,11 @@ class _MainHomePageState extends State<MainHomePage> {
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(20.r),
                         ),
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Icon(Icons.pets),
+                            const Icon(Icons.pets),
                             Text(
                               "Taking pet",
                               style: Theme.of(context).textTheme.bodyText1,
@@ -168,11 +165,11 @@ class _MainHomePageState extends State<MainHomePage> {
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(20.r),
                         ),
-                        padding: EdgeInsets.all(8),
+                        padding: const EdgeInsets.all(8),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: [
-                            Icon(Icons.wheelchair_pickup_sharp),
+                            const Icon(Icons.wheelchair_pickup_sharp),
                             Text(
                               "Accessibility",
                               style: Theme.of(context).textTheme.bodyText1,
@@ -209,12 +206,12 @@ class _MainHomePageState extends State<MainHomePage> {
                               color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(20.r),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 vertical: 8, horizontal: 10),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                               children: [
-                                Icon(Icons.shopping_bag_sharp),
+                                const Icon(Icons.shopping_bag_sharp),
                                 Text(
                                   "less than 30lbs",
                                   style: Theme.of(context).textTheme.bodyText1,
@@ -235,11 +232,11 @@ class _MainHomePageState extends State<MainHomePage> {
                               color: Colors.grey.shade200,
                               borderRadius: BorderRadius.circular(20.r),
                             ),
-                            padding: EdgeInsets.all(8),
+                            padding: const EdgeInsets.all(8),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.center,
                               children: [
-                                Icon(Icons.shopping_bag_sharp),
+                                const Icon(Icons.shopping_bag_sharp),
                                 Text(
                                   "over 30lbs",
                                   style: Theme.of(context).textTheme.bodyText1,
@@ -266,7 +263,7 @@ class _MainHomePageState extends State<MainHomePage> {
                           color: Colors.grey.shade200,
                           borderRadius: BorderRadius.circular(20.r),
                         ),
-                        padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                        padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
                         child: Text(
                           "\$ 150",
                           style: Theme.of(context).textTheme.bodyText1,
@@ -289,7 +286,7 @@ class _MainHomePageState extends State<MainHomePage> {
                                   Color(Constants.buttonGreen).withOpacity(0.9),
                               borderRadius: BorderRadius.circular(20.r),
                             ),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 18, vertical: 6),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -315,9 +312,9 @@ class _MainHomePageState extends State<MainHomePage> {
                                   Color(Constants.buttonGreen).withOpacity(0.6),
                               borderRadius: BorderRadius.circular(20.r),
                             ),
-                            margin: EdgeInsets.symmetric(
+                            margin: const EdgeInsets.symmetric(
                                 horizontal: 0, vertical: 2),
-                            padding: EdgeInsets.symmetric(
+                            padding: const EdgeInsets.symmetric(
                                 horizontal: 18, vertical: 6),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -653,7 +650,7 @@ class _MainHomePageState extends State<MainHomePage> {
                       margin: EdgeInsets.fromLTRB(2.h, 10.h, 2.h, 2.h),
                       padding: EdgeInsets.fromLTRB(10.h, 10.h, 10.h, 10.h),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 241, 240, 240),
+                        color: const Color.fromARGB(255, 241, 240, 240),
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Row(
@@ -681,7 +678,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                     const EdgeInsets.fromLTRB(20, 8, 20, 8),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.r),
-                                  color: Color.fromARGB(255, 230, 228, 228),
+                                  color:
+                                      const Color.fromARGB(255, 230, 228, 228),
                                 ),
                                 child: Text(
                                   "192 \$",
@@ -714,7 +712,7 @@ class _MainHomePageState extends State<MainHomePage> {
                       margin: EdgeInsets.fromLTRB(2.h, 10.h, 2.h, 2.h),
                       padding: EdgeInsets.fromLTRB(10.h, 10.h, 10.h, 10.h),
                       decoration: BoxDecoration(
-                        color: Color.fromARGB(255, 241, 240, 240),
+                        color: const Color.fromARGB(255, 241, 240, 240),
                         borderRadius: BorderRadius.circular(10.r),
                       ),
                       child: Row(
@@ -742,7 +740,8 @@ class _MainHomePageState extends State<MainHomePage> {
                                     const EdgeInsets.fromLTRB(20, 8, 20, 8),
                                 decoration: BoxDecoration(
                                   borderRadius: BorderRadius.circular(10.r),
-                                  color: Color.fromARGB(255, 230, 228, 228),
+                                  color:
+                                      const Color.fromARGB(255, 230, 228, 228),
                                 ),
                                 child: Text(
                                   "132 \$",

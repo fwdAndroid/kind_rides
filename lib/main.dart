@@ -1,18 +1,15 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:kind_rides/user/screens/chat_screen.dart';
-import 'package:kind_rides/user/screens/driver_review_screen.dart';
-import 'package:kind_rides/user/screens/favorite_drivers_screen.dart';
-import 'package:kind_rides/user/screens/inbox_screen.dart';
-import 'package:kind_rides/user/screens/main_home.dart';
-import 'package:kind_rides/user/screens/notification_screen.dart';
 import 'package:kind_rides/user/screens/splash_screen.dart';
-import 'package:kind_rides/user/screens/wallet_screen.dart';
-import 'user/screens/driver_pickup_screen.dart';
-import 'user/screens/ride_start_screen.dart';
+import 'firebase_options.dart';
 import 'utils/theme.dart';
 
-void main() {
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
   runApp(const MyApp());
 }
 

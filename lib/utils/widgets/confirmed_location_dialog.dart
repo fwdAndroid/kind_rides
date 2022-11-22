@@ -1,13 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutter_svg_provider/flutter_svg_provider.dart';
 import 'package:kind_rides/user/screens/driver_pickup_screen.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/reached_dialog.dart';
-import 'package:kind_rides/utils/widgets/text_field.dart';
-
-import 'date_dialog.dart';
 
 class ConfirmLocationDialog extends StatefulWidget {
   const ConfirmLocationDialog({

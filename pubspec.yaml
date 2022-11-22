@@ -42,6 +42,13 @@ dependencies:
   pinput: ^2.2.16
   modal_bottom_sheet: ^2.1.2
   flutter_svg_provider: ^1.0.3
+  get:
+  firebase_core: ^2.2.0
+  firebase_auth:
+  google_sign_in:
+  firebase_storage:
+  cloud_firestore:
+  fluttertoast:
 
 dev_dependencies:
   flutter_test:

@@ -1,12 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
-import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/bottom_menu_bar.dart';
 import 'main_home.dart';
@@ -196,11 +191,11 @@ class _InboxPageState extends State<InboxPage> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Container(
+                    SizedBox(
                       height: 40,
                       width: 300.w,
                       child: CTextField(
-                        prefixIcon: Icon(
+                        prefixIcon: const Icon(
                           Icons.search,
                           color: Colors.white,
                         ),

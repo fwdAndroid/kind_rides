@@ -1,14 +1,8 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/notification_card.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
 import '../../utils/widgets/bottom_menu_bar.dart';
 import 'notification_screen.dart';
@@ -218,7 +212,7 @@ class _WalletPageState extends State<WalletPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 40,
                         width: 230.w,
                         child: CTextField(
@@ -262,7 +256,7 @@ class _WalletPageState extends State<WalletPage> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceAround,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 40,
                         width: 230.w,
                         child: CTextField(
@@ -301,11 +295,11 @@ class _WalletPageState extends State<WalletPage> {
               child: Container(
                 //  width: double.infinity,
                 //   padding: EdgeInsets.all(0),
-                padding: EdgeInsets.fromLTRB(7, 6, 7, 6),
+                padding: const EdgeInsets.fromLTRB(7, 6, 7, 6),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(20.r),
-                  boxShadow: <BoxShadow>[
+                  boxShadow: const <BoxShadow>[
                     BoxShadow(
                         color: Color.fromARGB(133, 154, 156, 156),
                         blurRadius: 3.0,

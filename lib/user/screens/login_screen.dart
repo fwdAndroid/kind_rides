@@ -67,7 +67,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
-                              margin: EdgeInsets.all(6),
+                              margin: const EdgeInsets.all(6),
                               //    padding: EdgeInsets.all(3),
                               child: Icon(
                                 Icons.person_outline_outlined,
@@ -92,7 +92,7 @@ class _LoginPageState extends State<LoginPage> {
                                 color: Theme.of(context).splashColor,
                                 borderRadius: BorderRadius.circular(5.r),
                               ),
-                              margin: EdgeInsets.all(6),
+                              margin: const EdgeInsets.all(6),
                               child: Icon(
                                 Icons.lock_outline_rounded,
                                 color: Color(

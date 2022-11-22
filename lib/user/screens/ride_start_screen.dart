@@ -2,15 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/notification_screen.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
-import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/confirmed_location_dialog.dart';
-import 'package:kind_rides/utils/widgets/date_time_dialog.dart';
 import 'package:kind_rides/utils/widgets/reached_dialog.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
-import '../../utils/constants.dart';
 import '../../utils/widgets/bottom_menu_bar.dart';
 
 class RideStartPage extends StatefulWidget {
@@ -155,16 +148,16 @@ class _RideStartPageState extends State<RideStartPage> {
                       width: 130.h,
                       height: 50.h,
                       decoration: BoxDecoration(
-                        color: Color(0xFFc9eaeb).withOpacity(1),
+                        color: const Color(0xFFc9eaeb).withOpacity(1),
                         borderRadius: BorderRadius.circular(7.r),
                       ),
-                      padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                      padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SvgPicture.asset(
                             'assets/icons/emergency_icon.svg',
-                            color: Color(0xFF247377).withOpacity(1),
+                            color: const Color(0xFF247377).withOpacity(1),
                           ),
                           Text(
                             "Emergency",
@@ -177,16 +170,16 @@ class _RideStartPageState extends State<RideStartPage> {
                       width: 130.h,
                       height: 50.h,
                       decoration: BoxDecoration(
-                        color: Color(0xFFf4c6d1),
+                        color: const Color(0xFFf4c6d1),
                         borderRadius: BorderRadius.circular(7.r),
                       ),
-                      padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                      padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           SvgPicture.asset(
                             'assets/icons/cancel.svg',
-                            color: Color(0xFFeb96ab).withOpacity(1),
+                            color: const Color(0xFFeb96ab).withOpacity(1),
                           ),
                           Text(
                             "Cancel ride",
@@ -411,7 +404,7 @@ class _RideStartPageState extends State<RideStartPage> {
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceEvenly,
                                 children: [
-                                  Icon(
+                                  const Icon(
                                     Icons.radio_button_checked,
                                     color: Colors.black,
                                   ),
@@ -481,7 +474,7 @@ class _RideStartPageState extends State<RideStartPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Icon(Icons.pets),
+                              const Icon(Icons.pets),
                               Text(
                                 "1 pet",
                                 style: Theme.of(context).textTheme.bodyText1,

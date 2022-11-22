@@ -3,13 +3,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/chat_screen.dart';
 import 'package:kind_rides/user/screens/ride_start_screen.dart';
-import 'package:kind_rides/user/screens/signup_screen.dart';
-import 'package:kind_rides/utils/widgets/appbar.dart';
-import 'package:kind_rides/utils/widgets/button.dart';
-import 'package:kind_rides/utils/widgets/confirmed_location_dialog.dart';
-import 'package:kind_rides/utils/widgets/date_time_dialog.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
-import 'package:modal_bottom_sheet/modal_bottom_sheet.dart';
 import '../../utils/constants.dart';
 
 class DriverPickupPage extends StatefulWidget {
@@ -22,313 +16,6 @@ class DriverPickupPage extends StatefulWidget {
 class _DriverPickupPageState extends State<DriverPickupPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-  void _modalBottomSheetMenu() {
-    WidgetsBinding.instance.addPostFrameCallback((_) async {
-      await showModalBottomSheet(
-          context: context,
-          builder: (builder) {
-            return Container(
-                height: 280.0,
-                color: Colors
-                    .transparent, //could change this to Color(0xFF737373),
-                //so you don't have to change MaterialApp canvasColor
-                child: Container(
-                  height: 405.h,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20.r),
-                    color: Theme.of(context).scaffoldBackgroundColor,
-                  ),
-                  padding: const EdgeInsets.fromLTRB(8, 8, 8, 0),
-                  margin: const EdgeInsets.fromLTRB(2, 2, 2, 0),
-                  child: SingleChildScrollView(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          decoration: BoxDecoration(
-                            color: Colors.grey.shade100,
-                            borderRadius: BorderRadius.circular(10.r),
-                          ),
-                          padding: EdgeInsets.all(8),
-                          child: Column(children: [
-                            Image.asset(
-                              "assets/images/ride.png",
-                            ),
-                            SizedBox(
-                              height: 10.h,
-                            ),
-                            Text(
-                              "Ride",
-                              style: Theme.of(context).textTheme.headline4,
-                            ),
-                          ]),
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Text(
-                          "Seats",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Container(
-                            width: 150.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.start,
-                              children: [
-                                Icon(Icons.business),
-                                Text(
-                                  "ygygu gygy",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                Icon(
-                                  Icons.radio_button_checked,
-                                  color: Color(Constants.bgblack),
-                                ),
-                              ],
-                            )),
-                        Text(
-                          "Pet",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Container(
-                            width: 150.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.business),
-                                Text(
-                                  "ygygu gygy",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                Icon(
-                                  Icons.radio_button_checked,
-                                  color: Color(Constants.bgblack),
-                                ),
-                              ],
-                            )),
-                        Text(
-                          "Accessibility",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Container(
-                            width: 150.w,
-                            height: 40.h,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            padding: EdgeInsets.all(8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Icon(Icons.business),
-                                Text(
-                                  "ygygu gygy",
-                                  style: Theme.of(context).textTheme.bodyText1,
-                                ),
-                                Icon(
-                                  Icons.radio_button_checked,
-                                  color: Color(Constants.bgblack),
-                                ),
-                              ],
-                            )),
-                        Text(
-                          "Helping Hands",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Row(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          //    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            Container(
-                                //   width: 150.w,
-                                height: 40.h,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius: BorderRadius.circular(20.r),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.business),
-                                    Text(
-                                      "ygygu gygy",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText1,
-                                    ),
-                                    Icon(
-                                      Icons.radio_button_checked,
-                                      color: Color(Constants.bgblack),
-                                    ),
-                                  ],
-                                )),
-                            SizedBox(
-                              width: 10.h,
-                            ),
-                            Container(
-                                //  width: 150.w,
-                                height: 40.h,
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.shade200,
-                                  borderRadius: BorderRadius.circular(20.r),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.business),
-                                    Text(
-                                      "uhuhuh",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText1,
-                                    ),
-                                    Icon(
-                                      Icons.radio_button_checked,
-                                      color: Color(Constants.bgblack),
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        Text(
-                          "Fare Estimate",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Container(
-                            //  width: 150.w,
-                            //   height: 40.h,
-                            decoration: BoxDecoration(
-                              color: Colors.grey.shade200,
-                              borderRadius: BorderRadius.circular(20.r),
-                            ),
-                            padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
-                            child: Text(
-                              "\$ 150",
-                              style: Theme.of(context).textTheme.bodyText1,
-                            )),
-                        Text(
-                          "Payment Method",
-                          style: Theme.of(context).textTheme.headline4,
-                        ),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Container(
-                                // width: 150.w,
-                                height: 40.h,
-                                decoration: BoxDecoration(
-                                  color: Color(Constants.buttonGreen)
-                                      .withOpacity(0.9),
-                                  borderRadius: BorderRadius.circular(20.r),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Icon(Icons.business),
-                                    Text(
-                                      "ygygu gygy",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText1,
-                                    ),
-                                    Icon(
-                                      Icons.radio_button_checked,
-                                      color: Color(Constants.bgblack),
-                                    ),
-                                  ],
-                                )),
-                            SizedBox(
-                              width: 10.h,
-                            ),
-                            Container(
-                                //  width: 100.w,
-                                height: 40.h,
-                                decoration: BoxDecoration(
-                                  color: Color(Constants.buttonGreen)
-                                      .withOpacity(0.6),
-                                  borderRadius: BorderRadius.circular(20.r),
-                                ),
-                                padding: EdgeInsets.all(8),
-                                child: Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(
-                                      "ygygu gygy",
-                                      style:
-                                          Theme.of(context).textTheme.bodyText1,
-                                    ),
-                                    Icon(
-                                      Icons.radio_button_off_outlined,
-                                      color: Color(Constants.bgblack),
-                                    ),
-                                  ],
-                                )),
-                          ],
-                        ),
-                        SizedBox(
-                          height: 10.h,
-                        ),
-                        Container(
-                            margin: EdgeInsets.fromLTRB(0, 10.h, 0, 0),
-                            padding:
-                                EdgeInsets.fromLTRB(10.h, 15.h, 10.h, 15.h),
-                            decoration: BoxDecoration(
-                              color: Color(Constants.greenButtonBg),
-                              borderRadius: BorderRadius.circular(10.r),
-                            ),
-                            child: InkWell(
-                              onTap: () {
-                                showDialog(
-                                    context: context,
-                                    builder: (context) {
-                                      return ConfirmLocationDialog();
-                                    });
-                              },
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text(
-                                    "CONFIRM LOCATION",
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .headline3!
-                                        .copyWith(
-                                          color: Color(Constants.darkGreen),
-                                        ),
-                                  ),
-                                  SizedBox(
-                                    width: 10.h,
-                                    height: 5.h,
-                                  ),
-                                  Icon(
-                                    Icons.arrow_forward_ios_sharp,
-                                    size: 15.h,
-                                    color: Color(Constants.darkGreen),
-                                  ),
-                                ],
-                              ),
-                            )),
-                      ],
-                    ),
-                  ),
-                ));
-          });
-    });
-  }
 
   @override
   void initState() {
@@ -449,16 +136,16 @@ class _DriverPickupPageState extends State<DriverPickupPage> {
                           width: 130.h,
                           height: 50.h,
                           decoration: BoxDecoration(
-                            color: Color(0xFFc9eaeb).withOpacity(1),
+                            color: const Color(0xFFc9eaeb).withOpacity(1),
                             borderRadius: BorderRadius.circular(7.r),
                           ),
-                          padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                          padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/call_icon.svg',
-                                color: Color(0xFF247377).withOpacity(1),
+                                color: const Color(0xFF247377).withOpacity(1),
                               ),
                               Text(
                                 "278723877",
@@ -471,16 +158,16 @@ class _DriverPickupPageState extends State<DriverPickupPage> {
                           width: 130.h,
                           height: 50.h,
                           decoration: BoxDecoration(
-                            color: Color(0xFFf4c6d1),
+                            color: const Color(0xFFf4c6d1),
                             borderRadius: BorderRadius.circular(7.r),
                           ),
-                          padding: EdgeInsets.fromLTRB(15, 4, 15, 4),
+                          padding: const EdgeInsets.fromLTRB(15, 4, 15, 4),
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               SvgPicture.asset(
                                 'assets/icons/cancel.svg',
-                                color: Color(0xFFeb96ab).withOpacity(1),
+                                color: const Color(0xFFeb96ab).withOpacity(1),
                               ),
                               Text(
                                 "Cancel ride",
@@ -770,7 +457,7 @@ class _DriverPickupPageState extends State<DriverPickupPage> {
                                     ),
                                     child: Row(
                                       children: [
-                                        Icon(Icons.radio_button_checked),
+                                        const Icon(Icons.radio_button_checked),
                                         Text(
                                           "  20 min",
                                           style: Theme.of(context)

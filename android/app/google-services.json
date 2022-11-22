@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "647956529851",
+    "project_id": "kindride-user",
+    "storage_bucket": "kindride-user.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:647956529851:android:b43c4fee31b8ce8d879f9e",
+        "android_client_info": {
+          "package_name": "com.example.kind_rides"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "647956529851-dqam3o6sb80sgulerlovl8h5tthkgtmf.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyALTJva-MhzoND8lvXhasAON0StkblNZy8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "647956529851-dqam3o6sb80sgulerlovl8h5tthkgtmf.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "647956529851-s7bhf7f5phlfv1j3re54niv7pe4sf1rk.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.kindRides"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
