@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/login_screen.dart';
+import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/otp_verification_screen.dart';
+import 'package:kind_rides/utils/utils.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,8 +23,31 @@ class _SignupPageState extends State<SignupPage> {
   TextEditingController passwordController = TextEditingController();
   TextEditingController phoneController = TextEditingController();
   TextEditingController confirmPasswordController = TextEditingController();
+  TextEditingController codeController = TextEditingController();
   final formKey = GlobalKey<FormState>();
   FirebaseAuth auth = FirebaseAuth.instance;
+  bool loading = false;
+  void signup() {
+    if (formKey.currentState!.validate()) {
+      setState(() {
+        loading = true;
+      });
+      auth
+          .createUserWithEmailAndPassword(
+              email: emailController.text.toString(),
+              password: passwordController.text.toString())
+          .then((value) {
+        setState(() {
+          loading = false;
+        });
+      }).onError((error, stackTrace) {
+        Utils().toastMessage(error.toString());
+        setState(() {
+          loading = false;
+        });
+      });
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -194,18 +219,63 @@ class _SignupPageState extends State<SignupPage> {
                       child: InkWell(
                         onTap: () {
                           if (formKey.currentState!.validate()) {
-                            auth.createUserWithEmailAndPassword(
-                                email: emailController.text.toString(),
-                                password: passwordController.text.toString());
+                            setState(() {
+                              loading = true;
+                            });
+                            // auth
+                            //     .createUserWithEmailAndPassword(
+                            //         email: emailController.text.toString(),
+                            //         password:
+                            //             passwordController.text.toString())
+                            auth
+                                .verifyPhoneNumber(
+                                    phoneNumber:
+                                        phoneController.text.toString(),
+                                    verificationCompleted:
+                                        (PhoneAuthCredential credential) async {
+                                      await auth
+                                          .signInWithCredential(credential);
+                                    },
+                                    verificationFailed: (e) {
+                                      Utils().toastMessage(e.toString());
+                                    },
+                                    codeSent: ((String verificationId,
+                                        int? resentToken) async {
+                                      Navigator.of(context).push(
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                OTPVerificationPage(
+                                                  verificationId:
+                                                      verificationId,
+                                                )),
+                                      );
+                                      setState(() {
+                                        loading = false;
+                                      });
+                                      // PhoneAuthCredential credential =
+                                      //     PhoneAuthProvider.credential(
+                                      //         verificationId: verificationId,
+                                      //         smsCode: Utils().getCode);
+                                      // await auth.signInWithCredential(credential);
+                                    }),
+                                    codeAutoRetrievalTimeout: (e) {
+                                      Utils().toastMessage(e.toString());
+                                    })
+                                .then((value) {
+                              setState(() {
+                                loading = false;
+                              });
+                            }).onError((error, stackTrace) {
+                              Utils().toastMessage(error.toString());
+                              setState(() {
+                                loading = false;
+                              });
+                            });
                           }
-                          // Navigator.of(context).pushAndRemoveUntil(
-                          //     MaterialPageRoute(
-                          //         builder: (context) =>
-                          //             const OTPVerificationPage()),
-                          //     (Route<dynamic> route) => false);
                         },
                         child: getButton(
                             shadow: true,
+                            loading: loading,
                             radius: 30.r,
                             width: 160.h,
                             context: context,

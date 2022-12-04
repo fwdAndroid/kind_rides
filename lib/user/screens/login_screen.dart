@@ -1,8 +1,10 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
+import 'package:kind_rides/utils/utils.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 
@@ -18,6 +20,25 @@ class LoginPage extends StatefulWidget {
 class _LoginPageState extends State<LoginPage> {
   TextEditingController emailController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
+  final formKey = GlobalKey<FormState>();
+  FirebaseAuth auth = FirebaseAuth.instance;
+  bool loading = false;
+  void login() {
+    auth
+        .signInWithEmailAndPassword(
+            email: emailController.text.toString(),
+            password: passwordController.text.toString())
+        .then((value) {
+      setState(() {
+        loading = false;
+      });
+    }).onError((error, stackTrace) {
+      Utils().toastMessage(error.toString());
+      setState(() {
+        loading = false;
+      });
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -61,50 +82,57 @@ class _LoginPageState extends State<LoginPage> {
                           SizedBox(
                             height: 35.h,
                           ),
-                          CTextField(
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: const EdgeInsets.all(6),
-                              //    padding: EdgeInsets.all(3),
-                              child: Icon(
-                                Icons.person_outline_outlined,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
+                          Form(
+                            key: formKey,
+                            child: Column(
+                              children: [
+                                CTextField(
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: const EdgeInsets.all(6),
+                                    //    padding: EdgeInsets.all(3),
+                                    child: Icon(
+                                      Icons.person_outline_outlined,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Email / Phone Number",
+                                  isPasswordField: false,
+                                  controller: emailController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                                SizedBox(
+                                  height: 10.h,
+                                ),
+                                CTextField(
+                                  maxlines: 1,
+                                  prefixIcon: Container(
+                                    decoration: BoxDecoration(
+                                      color: Theme.of(context).splashColor,
+                                      borderRadius: BorderRadius.circular(5.r),
+                                    ),
+                                    margin: const EdgeInsets.all(6),
+                                    child: Icon(
+                                      Icons.lock_outline_rounded,
+                                      color: Color(
+                                        Constants.greenIcon,
+                                      ).withOpacity(0.7),
+                                    ),
+                                  ),
+                                  hintText: "Password",
+                                  isPasswordField: true,
+                                  controller: passwordController,
+                                  validator: (value) {},
+                                  autovalidateMode: AutovalidateMode.disabled,
+                                ),
+                              ],
                             ),
-                            hintText: "Email / Phone Number",
-                            isPasswordField: false,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
-                          ),
-                          SizedBox(
-                            height: 10.h,
-                          ),
-                          CTextField(
-                            maxlines: 1,
-                            prefixIcon: Container(
-                              decoration: BoxDecoration(
-                                color: Theme.of(context).splashColor,
-                                borderRadius: BorderRadius.circular(5.r),
-                              ),
-                              margin: const EdgeInsets.all(6),
-                              child: Icon(
-                                Icons.lock_outline_rounded,
-                                color: Color(
-                                  Constants.greenIcon,
-                                ).withOpacity(0.7),
-                              ),
-                            ),
-                            hintText: "Password",
-                            isPasswordField: true,
-                            controller: emailController,
-                            validator: (value) {},
-                            autovalidateMode: AutovalidateMode.disabled,
                           ),
                           SizedBox(
                             height: 6.h,
@@ -139,16 +167,23 @@ class _LoginPageState extends State<LoginPage> {
                       bottom: -25,
                       child: InkWell(
                         onTap: () {
-                          Navigator.of(context).pushAndRemoveUntil(
-                              MaterialPageRoute(
-                                  builder: (context) => const MainHomePage()),
-                              (Route<dynamic> route) => false);
+                          if (formKey.currentState!.validate()) {
+                            setState(() {
+                              loading = true;
+                            });
+                            login();
+                          }
+                          // Navigator.of(context).pushAndRemoveUntil(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const MainHomePage()),
+                          //     (Route<dynamic> route) => false);
                         },
                         child: getButton(
                             shadow: true,
                             radius: 30.r,
                             width: 160.h,
                             context: context,
+                            loading: loading,
                             alignment: MainAxisAlignment.center,
                             text: "Login"),
                       ),

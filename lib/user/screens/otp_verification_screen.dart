@@ -1,24 +1,30 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/route_manager.dart';
 import 'package:kind_rides/user/screens/main_home.dart';
 import 'package:kind_rides/user/screens/signup_screen.dart';
+import 'package:kind_rides/utils/utils.dart';
 import 'package:kind_rides/utils/widgets/button.dart';
 import 'package:kind_rides/utils/widgets/text_field.dart';
 import 'package:pinput/pinput.dart';
 import '../../utils/constants.dart';
 
 class OTPVerificationPage extends StatefulWidget {
-  const OTPVerificationPage({Key? key}) : super(key: key);
+  OTPVerificationPage({Key? key, required this.verificationId})
+      : super(key: key);
+  final String verificationId;
 
   @override
   State<OTPVerificationPage> createState() => _OTPVerificationPageState();
 }
 
 class _OTPVerificationPageState extends State<OTPVerificationPage> {
-  TextEditingController emailController = TextEditingController();
+  TextEditingController codeController = TextEditingController();
   TextEditingController passwordController = TextEditingController();
-
+  FirebaseAuth auth = FirebaseAuth.instance;
+  bool loading = false;
   @override
   Widget build(BuildContext context) {
     final defaultPinTheme = PinTheme(
@@ -92,8 +98,30 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                           SizedBox(
                             height: 10.h,
                           ),
+                          // CTextField(
+                          //   maxlines: 1,
+                          //   prefixIcon: Container(
+                          //     decoration: BoxDecoration(
+                          //       color: Theme.of(context).splashColor,
+                          //       borderRadius: BorderRadius.circular(5.r),
+                          //     ),
+                          //     margin: EdgeInsets.all(6),
+                          //     child: Icon(
+                          //       Icons.lock_outline_rounded,
+                          //       color: Color(
+                          //         Constants.greenIcon,
+                          //       ).withOpacity(0.7),
+                          //     ),
+                          //   ),
+                          //   hintText: "Code",
+                          //   isPasswordField: false,
+                          //   controller: codeController,
+                          //   validator: (value) {},
+                          //   autovalidateMode: AutovalidateMode.disabled,
+                          // ),
                           Form(
                             child: Pinput(
+                              length: 6,
                               cursor: Image.asset(
                                 "assets/icons/cursor.png",
                                 width: 25.h,
@@ -109,7 +137,10 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                               pinputAutovalidateMode:
                                   PinputAutovalidateMode.onSubmit,
                               showCursor: true,
-                              onCompleted: (pin) {},
+                              onCompleted: (pin) async {
+                                debugPrint(pin);
+                                codeController.text = pin;
+                              },
                             ),
                           ),
                           SizedBox(
@@ -121,11 +152,30 @@ class _OTPVerificationPageState extends State<OTPVerificationPage> {
                     Positioned(
                       bottom: -25,
                       child: InkWell(
-                        onTap: () {
-                          Navigator.of(context).pushAndRemoveUntil(
+                        onTap: () async {
+                          setState(() {
+                            loading = true;
+                          });
+                          // PhoneAuthProvider.getCredential(verificationId: verificationId, smsCode: smsCode);
+                          final credential = PhoneAuthProvider.credential(
+                              verificationId: widget.verificationId,
+                              smsCode: codeController.text.toString());
+                          try {
+                            await auth.signInWithCredential(credential);
+                            Navigator.of(context).push(
                               MaterialPageRoute(
-                                  builder: (context) => const MainHomePage()),
-                              (Route<dynamic> route) => false);
+                                  builder: (context) => MainHomePage()),
+                            );
+                          } catch (e) {
+                            debugPrint(e.toString());
+                            setState(() {
+                              loading = false;
+                            });
+                          }
+                          // Navigator.of(context).pushAndRemoveUntil(
+                          //     MaterialPageRoute(
+                          //         builder: (context) => const MainHomePage()),
+                          //     (Route<dynamic> route) => false);
                         },
                         child: getButton(
                             shadow: true,

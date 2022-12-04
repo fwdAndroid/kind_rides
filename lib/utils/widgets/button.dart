@@ -15,6 +15,7 @@ Widget getButton({
   Color? color,
   required bool shadow,
   TextStyle? style,
+  bool loading = false,
 }) {
   return Container(
     padding: EdgeInsets.symmetric(
@@ -36,15 +37,24 @@ Widget getButton({
       // ),
       borderRadius: BorderRadius.circular(radius ?? 20.r),
     ),
-    child: Row(
-      mainAxisAlignment: alignment,
-      children: [
-        Text(
-          text ?? "",
-          style: style ?? Theme.of(context).textTheme.headline3,
-        ),
-        icon ?? Container(),
-      ],
-    ),
+    child: loading
+        ? Container(
+            width: 30,
+            height: 20,
+            child: CircularProgressIndicator(
+              strokeWidth: 4,
+              color: Colors.white,
+            ),
+          )
+        : Row(
+            mainAxisAlignment: alignment,
+            children: [
+              Text(
+                text ?? "",
+                style: style ?? Theme.of(context).textTheme.headline3,
+              ),
+              icon ?? Container(),
+            ],
+          ),
   );
 }
